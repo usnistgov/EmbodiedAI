@@ -1,0 +1,9 @@
+*.~*~
+*.pyc
+*.log
+Log_*
+install
+Todo.txt
+*.so*
+*.user.*
+*.bak

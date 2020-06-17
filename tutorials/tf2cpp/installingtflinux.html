@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Reinforcment Learning for Agile Robotics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto", sans-serif;
+    color: teal;
+}
+html, body {
+    font-family: "Roboto", sans-serif;margin:10;padding:2
+}
+.w3-sidebar {
+   z-index: 3;
+    width: 250px;
+     top: 43px;
+     bottom: 0;
+    height: inherit;
+ }
+
+.introb {
+     margin-top: 64px;
+     margin-left: 75px;
+     margin-right: 75px;
+     margin-bottom: 12px;
+ }
+               pre {
+   background: #f4f4f4;
+   border: 1px solid #ddd;
+   border-left: 3px solid #f36d33;
+   color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+</style>
+</head>
+<body>
+
+
+<p>John Michaloski</p>
+
+
+
+<p>3 February 2020</p>
+
+
+
+<p></p>
+
+
+
+<p>Contents</p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<p># Table of Contents</p>
+
+
+
+<p></p>
+
+
+
+<p>** </p>
+
+
+
+<h3> <a name="Python_Tensoflow"></a>Python Tensoflow</h3>
+
+
+<h2> <a name="Installing_Tensorflow_2_on_Ubuntu_using_Pycharm"></a>Installing Tensorflow 2 on Ubuntu using Pycharm</h2>
+
+
+<p># Create a new  anaconda3 python environment</p>
+
+
+
+<pre>
+	conda create --name gzrcsplugin_env python=3.6.10 
+</pre>
+
+
+<p># Activate the new anaconda3 python environment</p>
+
+
+
+<pre>
+	source activate gzrcsplugin_env 
+	pip install pandas 
+	pip install numpy 
+	pip install matplotlib 
+	pip install sklearn 
+	pip install keras 
+	pip install tensor* 
+	pip3 install --upgrade tensorflow 
+	pip install --upgrade pandas 
+	python -m pip install pandas 
+</pre>
+
+
+<p># Run pycharm in gzrcs environment (bash script to invoke although it can be installed with apt-get install and invoked without bash – but may not have correct environment variable.</p>
+
+
+
+<pre>
+	/usr/local/pycharm-community-2017.3.3/bin/pycharm.sh 
+</pre>
+
+
+<p></p>
+
+
+
+<h2> <a name="Setting_up_Pycharm_with_correct_Tensorflow_2_Environment_on_Ubuntu"></a>Setting up Pycharm with correct Tensorflow 2 Environment on Ubuntu</h2>
+
+
+<p>If you are using Pycharm (community) the following section describes getting the IDE up to speed to code in Tensorflow 2 (handling import, choosing correct Python interpreter, etc.)</p>
+
+
+
+<p>Even if you set up the Python 3.6 correctly in Anaconda, Pycharm may not find it, or may not list it in its possible Python interpreters under the File->Settings:</p>
+
+
+
+
+<img border='1' src="./installingtflinux\installingtflinux_image1.gif">
+
+
+
+<p></p>
+
+
+
+<p>If the settings do not show the Python 3.6 interpreter, you can add it using the [+] sign above:</p>
+
+
+
+
+<img border='1' src="./installingtflinux\installingtflinux_image2.gif">
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<p>Now you can select the appropriate Python 3.6 interpreter and then add the required Python packages using the [+] button next to the packages list</p>
+
+
+
+<p></p>
+
+
+
+
+<img border='1' src="./installingtflinux\installingtflinux_image3.gif">
+
+
+
+<p></p>
+
+
+
+<p>For example, the pandas Python package is used so you need to install if as shown below:</p>
+
+
+
+
+<img border='1' src="./installingtflinux\installingtflinux_image4.gif">
+
+
+
+<p></p>
+
+
+
+<p>Of note, you do not need to add the Keras packages as these are part of the </p>
+
+
+
+<p></p>
+
+
+
+<h3> <a name="C++_Tensorflow"></a>C++ Tensorflow</h3>
+
+
+<h2> <a name="Compiling_Tensorflow_for_C++_on_Ubuntu"></a>Compiling Tensorflow for C++ on Ubuntu</h2>
+
+
+<p>Several web sites offer explanations on how to build Tensorflow from source to be used by C++. In our case, the target platform was Ubuntu 16.04 (Xenial). </p>
+
+
+
+<h3> <a name="Prerequisites"></a>Prerequisites</h3>
+
+
+<p>These were the prerequisites for building/compiling Tensorflow for C++/</p>
+
+
+
+<ul>
+
+1. No sudo right</LI>
+
+
+</ul>
+
+
+2. Must install downgrade your bazel installation to version 0.26.1 or lower</LI>
+
+
+</ul>
+
+
+3. Ubuntu 16.04 instsallation</LI>
+
+
+</ul>
+
+
+4. Tensorflow 2.0</LI>
+
+
+</ul>
+
+
+<p></p>
+
+
+
+<p>The flowing steps were taken:</p>
+
+
+
+<ul>
+
+1. install bazel</LI>
+
+
+</ul>
+
+
+1. Navigate to https://github.com/bazelbuild/bazel/releases?after=0.28.0</LI>
+
+
+</ul>
+
+
+2. Under assets download bazel-0.26.1-installer-linux-x86_64.sh</LI>
+
+
+</ul>
+
+
+2. cd Download</LI>
+
+
+</ul>
+
+
+3. Added run permission of  ./bazel-0.26.1-installer-linux-x86_64.sh</LI>
+
+
+</ul>
+
+
+4. ./bazel-0.26.1-installer-linux-x86_64.sh</LI>
+
+
+</ul>
+
+
+5. Installed in /usr/local</LI>
+
+
+</ul>
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h3> <a name="Building_Tensorflow_From_Source_Via_Clone_and_Bazel"></a>Building Tensorflow From Source Via Clone and Bazel</h3>
+
+
+<pre>
+	https://tuanphuc.github.io/standalone-tensorflow-cpp/ 
+</pre>
+
+
+<p></p>
+
+
+
+<ul>
+
+1. cd /usr/local</LI>
+
+
+</ul>
+
+
+2. git clone https://github.com/tensorflow/tensorflow.git</LI>
+
+
+</ul>
+
+
+3. cd tensorflow</LI>
+
+
+</ul>
+
+
+4. git checkout branch_name  # r1.9, r1.10, etc.  I did: r2.0</LI>
+
+
+</ul>
+
+
+5. ./configure</LI>
+
+
+</ul>
+
+
+<p>(YOU SHOULD HAVE PYTHON 3 INSTALLED: configure will find it.</p>
+
+
+
+<p>answered default or no to all except for what?</p>
+
+
+
+<p>/usr/local/anaconda3/envs/gzrcsplugin_env/lib/python3.6/site-packages) as I had</p>
+
+
+
+<p>previously installed python 3.6 using anaconda3 under virtual environment  gzrcsplugin_env)</p>
+
+
+
+<p></p>
+
+
+
+<ul>
+
+6. bazel build //tensorflow:libtensorflow_cc.so --config=v2 --config=nonccl</LI>
+
+
+</ul>
+
+
+<p>this did not include GPU support, or installation died otherwise.</p>
+
+
+
+<p></p>
+
+
+
+<ul>
+
+7. /usr/local/tensorflow/tensorflow/contrib/makefile/build_all_linux.sh</LI>
+
+
+</ul>
+
+
+<p>Installing ADSL and PROTOBUF that are in makefile/contrib wtih bash shell will build:</p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<pre>
+	/home/isd/michalos/build/TEstBuildTf/debug/TestBuildTf: error while loading shared libraries: libtensorflow_framework.so.2: cannot open shared object file: No such file or directory 
+	 
+	/home/isd/michalos/build/TEstBuildTf/debug/TestBuildTf: error while loading shared libraries: libtensorflow_cc.so.2: cannot open shared object file: No such file or directory 
+	2020-01-22 16:28:14.803482: I ../../src/TensorFlowCpp/TestBuildTf/neuralnet.cpp:34] Tensor<type: float shape: [18431,12] values: [-0.2927 -0.4952 -0.4956...]...> 
+	2020-01-22 16:28:14.803678: I ../../src/TensorFlowCpp/TestBuildTf/neuralnet.cpp:35] Tensor<type: float shape: [18431,6] values: [0.3379 -0.0708 -0.9385...]...> 
+	2020-01-22 16:28:14.857802: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX 
+	2020-01-22 16:28:14.962889: F ../../src/TensorFlowCpp/TestBuildTf/neuralnet.cpp:157] Non-OK-status: session.Run({{x, x_data}, {y, y_data}}, {loss}, &outputs) status: 
+	 
+	Invalid argument: Matrix size-incompatible: In[0]: [18431,12], In[1]: [3,3] 
+	         [[{{node MatMul}}]] 
+</pre>
+
+
+<p></p>
+
+</body>
+</html>
